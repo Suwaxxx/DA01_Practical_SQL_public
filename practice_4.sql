@@ -26,9 +26,7 @@ from customer
 where referee_id <> 2 or referee_id is null
 --baitap5
 select 
-case when survived =1 then 1
-else 0
-end survived,
+survived,
 count(case when pclass =1 then 1
 end )first_class,
 count(case when pclass =2 then 1
