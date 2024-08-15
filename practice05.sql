@@ -1,4 +1,4 @@
---baitap 1
+--baitap 1 Em gần như mỗi ngày làm một bài và cuối cùng cũm làm xong :>>> Iu anh BCS lớp <3333
 select b.continent,  floor(avg(a.population) )as average_count
 from city as a
 left join country as b
