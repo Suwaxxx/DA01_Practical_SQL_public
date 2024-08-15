@@ -67,7 +67,6 @@ from pages as t1
 left join page_likes as t2
 on t1.page_id=t2.page_id
 where user_id is null
-group by t1.page_id
 order by t1.page_id
 
 
