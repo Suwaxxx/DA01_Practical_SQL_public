@@ -130,7 +130,7 @@ from address as t1
 on t1.address_id= t2.address_id
 where t2.customer_id is null
 --baitap7
-select t1.city, sum(amount)
+select t1.city,  coalesce(sum(amount),0) as revenue
 	from city as t1
  left join address as t	
 	on t1.city_id=t.city_id
@@ -139,8 +139,7 @@ select t1.city, sum(amount)
 	left join payment as t3
 on t2.customer_id=t3.customer_id
 group by t1.city
-having sum(amount) is not null
-order by sum(amount) desc
+order by revenue desc
 limit 1
 --baitap 8 (dạ bài này em thấy chị Jolie ghi đề là cao nhất nhưng để đáp án là 50.85 nên em làm theo đáp án ạ<333)
 select concat (t2.city, ', ', t1.country) as address, sum(amount) as revenue
