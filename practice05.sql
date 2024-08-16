@@ -1,3 +1,4 @@
+--BAI TAP PRATICE
 --baitap 1 Em gần như mỗi ngày làm một bài và cuối cùng cũm làm xong :>>> Iu anh BCS lớp <3333
 select b.continent,  floor(avg(a.population) )as average_count
 from city as a
@@ -68,5 +69,119 @@ left join page_likes as t2
 on t1.page_id=t2.page_id
 where user_id is null
 order by t1.page_id
+
+--BAI TAP Mid course
+--baitap1
+select distinct replacement_cost
+from film
+order by replacement_cost
+limit 1
+--baitap2
+with temp_output as (
+	select 
+case
+when replacement_cost between 9.99 and 19.99
+then 'low'
+when replacement_cost between 20.00 and 24.99
+then 'medium'
+when replacement_cost between 25.99 and 29.99
+then 'high'
+end category,
+count (film_id)
+from film
+group by category
+)
+select category from temp_output
+where category='low'
+--baitap3
+select t1.title as film_title, t1.length, t3.name as category_name
+from film as t1
+join film_category as t2
+on t1.film_id=t2.film_id
+	left join category as t3
+	on t2.category_id=t3.category_id
+	where t3.name in ('Drama', 'Sports')
+	order by t1.length desc
+limit 1
+--baitap4
+select t3.name as category_name, concat(count (t1.title), ' titles') as count_title
+	from film as t1
+join film_category as t2
+on t1.film_id=t2.film_id
+		left join category as t3
+	on t2.category_id=t3.category_id
+group by t3.name
+order by count_title desc
+limit 1
+--baitap5
+select concat(t1.first_name,' ', t1.last_name) as ho_va_ten, concat(count(*), ' movies') as count
+	from actor as t1
+	right join film_actor as t2
+	on t1.actor_id=t2.actor_id
+left join film as t3
+on t2.film_id=t3.film_id
+group by t1.first_name, t1.last_name
+order by count(*) desc
+limit 1
+--baitap6
+select count (*) 
+from address as t1
+	left join customer as t2
+on t1.address_id= t2.address_id
+where t2.customer_id is null
+--baitap7
+select t1.city, sum(amount)
+	from city as t1
+ left join address as t	
+	on t1.city_id=t.city_id
+	left join customer as t2
+		on t.address_id=t2.address_id
+	left join payment as t3
+on t2.customer_id=t3.customer_id
+group by t1.city
+having sum(amount) is not null
+order by sum(amount) desc
+limit 1
+--baitap 8 (dạ bài này em thấy chị Jolie ghi đề là cao nhất nhưng để đáp án là thấp nhất ạ)
+select 
+	concat (t2.city, ', ', t1.country) as address, sum(amount) as revenue
+from city as t2
+left join country as t1
+		on t1.country_id=t2.country_id
+left join address as t3
+		on t2.city_id=t3.city_id
+left join customer as t4
+	on t3.address_id=t4.address_id
+left join payment as t5
+on t4.customer_id=t5.customer_id
+group by t1.country, t2.city
+having sum(amount) is not null
+order by sum(amount) desc
+limit 1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
