@@ -142,9 +142,8 @@ group by t1.city
 having sum(amount) is not null
 order by sum(amount) desc
 limit 1
---baitap 8 (dạ bài này em thấy chị Jolie ghi đề là cao nhất nhưng để đáp án là thấp nhất ạ)
-select 
-	concat (t2.city, ', ', t1.country) as address, sum(amount) as revenue
+--baitap 8 (dạ bài này em thấy chị Jolie ghi đề là cao nhất nhưng để đáp án là thấp nhất nên em làm theo đáp án ạ<333)
+select concat (t2.city, ', ', t1.country) as address, sum(amount) as revenue
 from city as t2
 left join country as t1
 		on t1.country_id=t2.country_id
@@ -156,7 +155,7 @@ left join payment as t5
 on t4.customer_id=t5.customer_id
 group by t1.country, t2.city
 having sum(amount) is not null
-order by sum(amount) desc
+order by sum(amount)
 limit 1
 
 
