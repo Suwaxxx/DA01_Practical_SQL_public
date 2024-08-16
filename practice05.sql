@@ -142,7 +142,7 @@ group by t1.city
 having sum(amount) is not null
 order by sum(amount) desc
 limit 1
---baitap 8 (dạ bài này em thấy chị Jolie ghi đề là cao nhất nhưng để đáp án là thấp nhất nên em làm theo đáp án ạ<333)
+--baitap 8 (dạ bài này em thấy chị Jolie ghi đề là cao nhất nhưng để đáp án là 50.85 nên em làm theo đáp án ạ<333)
 select concat (t2.city, ', ', t1.country) as address, sum(amount) as revenue
 from city as t2
 left join country as t1
@@ -157,30 +157,3 @@ group by t1.country, t2.city
 having sum(amount) is not null
 order by sum(amount)
 limit 1
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
