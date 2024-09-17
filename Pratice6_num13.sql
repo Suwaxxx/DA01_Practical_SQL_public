@@ -21,3 +21,19 @@ product, total_spend
 from c
 where rank <=2
 order by category, rank
+--baitap3
+with b as (
+select policy_holder_id,
+count (*)
+from callers
+group by policy_holder_id
+having count(*) >=3
+)
+select count(*) as ddeems
+from b
+--baitap4
+select page_id
+from pages 
+where page_id not in (select page_id from page_likes)
+--baitap5
+
